@@ -116,6 +116,32 @@ namespace Google.Play.Integrity
         CloudProjectNumberIsInvalid = -16,
 
         /// <summary>
+        /// The provided request hash is too long. The request hash length must be less than 500 bytes.
+        ///
+        /// <para>Retry with a shorter request hash.</para>
+        /// </summary>
+        RequestHashTooLong = -17,
+
+        /// <summary>
+        /// There was a transient error in the client device.
+        ///
+        /// <para>Retry with an exponential backoff.</para>
+        /// <para>If the error persists after a few retries, you should assume
+        /// that the device has failed integrity checks and act accordingly.
+        /// </para>
+        /// </summary>
+        ClientTransientError = -18,
+
+        /// <summary>
+        /// The <see cref="StandardIntegrityTokenProvider"/> is invalid (e.g.
+        /// it is outdated). This error can be returned only for <see cref="StandardIntegrityTokenProvider.request"/>
+        ///
+        /// <para>Request a new integrity token provider by calling
+        /// <see cref="StandardIntegrityManager.prepareIntegrityToken"/></para>
+        /// </summary>
+        IntegrityTokenProviderInvalid = -19,
+
+        /// <summary>
         /// Unknown internal error.
         /// 
         /// <para>Retry with an exponential backoff. Consider filing a bug if fails consistently.</para>
