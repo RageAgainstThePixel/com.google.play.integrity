@@ -27,11 +27,10 @@ namespace Google.Play.Integrity
         /// <summary>
         /// Integrity API is not available.
         /// <para>
-        /// The Play Store version might be old, or the application is not
-        /// allowlisted to use this API.
+        /// Integrity API is not enabled, or the Play Store version might be old.
         /// Recommended actions:
         /// <list>
-        /// <item>Make sure that an app is allowlisted to use the API.</item>
+        /// <item>Make sure that Integrity API is enabled in Google Play Console.</item>
         /// <item>Ask the user to update Play Store.</item>
         /// </list>
         /// </para>
@@ -162,6 +161,19 @@ namespace Google.Play.Integrity
         /// </para>
         /// </summary>
         CloudProjectNumberIsInvalid = 16,
+
+        /// <summary>
+        /// There was a transient error in the client device.
+        /// <para>
+        /// Retry with an exponential backoff.
+        /// </para>
+        /// <para>
+        /// Introduced in Integrity Play Core version 1.1.0 (prior versions returned a token with
+        /// empty Device Integrity Verdict). If the error persists after a few retries, you should
+        /// assume that the device has failed integrity checks and act accordingly.
+        /// </para>
+        /// </summary>
+        ClientTransientError = 17,
 
         /// <summary>
         /// Unknown internal error.
